@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConsultaFechaLiquidacionCoutaGUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConsultaFechaLiquidacionCoutaGUI.Designer.cs">
+      <DependentUpon>ConsultaFechaLiquidacionCoutaGUI.cs</DependentUpon>
+    </Compile>
     <Compile Include="ConsultaLiquidacionesGeneralesGUI.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -84,6 +90,9 @@
     <Compile Include="RegistroPacienteCoutaModeradoraGUI.Designer.cs">
       <DependentUpon>RegistroPacienteCoutaModeradoraGUI.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ConsultaFechaLiquidacionCoutaGUI.resx">
+      <DependentUpon>ConsultaFechaLiquidacionCoutaGUI.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ConsultaLiquidacionesGeneralesGUI.resx">
       <DependentUpon>ConsultaLiquidacionesGeneralesGUI.cs</DependentUpon>
     </EmbeddedResource>

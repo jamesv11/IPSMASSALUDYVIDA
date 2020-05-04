@@ -29,8 +29,9 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
+            this.BuscarBtn = new System.Windows.Forms.Button();
             this.BuscarTxt = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -46,7 +47,6 @@
             this.button1 = new System.Windows.Forms.Button();
             this.EliminarBtn = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.BuscarBtn = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -62,15 +62,15 @@
             this.panel1.Size = new System.Drawing.Size(825, 102);
             this.panel1.TabIndex = 0;
             // 
-            // label1
+            // BuscarBtn
             // 
-            this.label1.AutoSize = true;
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(300, 42);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(40, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Buscar";
+            this.BuscarBtn.Image = global::LiquidacionCoutaModeradoraGUI.Properties.Resources.searchzoomregular_106304;
+            this.BuscarBtn.Location = new System.Drawing.Point(463, 18);
+            this.BuscarBtn.Name = "BuscarBtn";
+            this.BuscarBtn.Size = new System.Drawing.Size(75, 61);
+            this.BuscarBtn.TabIndex = 2;
+            this.BuscarBtn.UseVisualStyleBackColor = true;
+            this.BuscarBtn.Click += new System.EventHandler(this.BuscarBtn_Click);
             // 
             // BuscarTxt
             // 
@@ -78,6 +78,16 @@
             this.BuscarTxt.Name = "BuscarTxt";
             this.BuscarTxt.Size = new System.Drawing.Size(100, 20);
             this.BuscarTxt.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(267, 42);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(73, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "N°Liquidacion";
             // 
             // label2
             // 
@@ -141,6 +151,7 @@
             // 
             // NumeroLiquidacionTxt
             // 
+            this.NumeroLiquidacionTxt.Enabled = false;
             this.NumeroLiquidacionTxt.Location = new System.Drawing.Point(278, 138);
             this.NumeroLiquidacionTxt.Name = "NumeroLiquidacionTxt";
             this.NumeroLiquidacionTxt.Size = new System.Drawing.Size(100, 20);
@@ -148,6 +159,7 @@
             // 
             // FechaTxt
             // 
+            this.FechaTxt.Enabled = false;
             this.FechaTxt.Location = new System.Drawing.Point(278, 270);
             this.FechaTxt.Name = "FechaTxt";
             this.FechaTxt.Size = new System.Drawing.Size(100, 20);
@@ -162,6 +174,7 @@
             // 
             // SalarioTxt
             // 
+            this.SalarioTxt.Enabled = false;
             this.SalarioTxt.Location = new System.Drawing.Point(278, 204);
             this.SalarioTxt.Name = "SalarioTxt";
             this.SalarioTxt.Size = new System.Drawing.Size(100, 20);
@@ -169,6 +182,7 @@
             // 
             // IdentificacionTxt
             // 
+            this.IdentificacionTxt.Enabled = false;
             this.IdentificacionTxt.Location = new System.Drawing.Point(278, 171);
             this.IdentificacionTxt.Name = "IdentificacionTxt";
             this.IdentificacionTxt.Size = new System.Drawing.Size(100, 20);
@@ -176,6 +190,7 @@
             // 
             // NombreTxt
             // 
+            this.NombreTxt.Enabled = false;
             this.NombreTxt.Location = new System.Drawing.Point(278, 300);
             this.NombreTxt.Name = "NombreTxt";
             this.NombreTxt.Size = new System.Drawing.Size(100, 20);
@@ -214,16 +229,6 @@
             this.pictureBox1.Size = new System.Drawing.Size(100, 130);
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
-            // 
-            // BuscarBtn
-            // 
-            this.BuscarBtn.Image = global::LiquidacionCoutaModeradoraGUI.Properties.Resources.searchzoomregular_106304;
-            this.BuscarBtn.Location = new System.Drawing.Point(463, 18);
-            this.BuscarBtn.Name = "BuscarBtn";
-            this.BuscarBtn.Size = new System.Drawing.Size(75, 61);
-            this.BuscarBtn.TabIndex = 2;
-            this.BuscarBtn.UseVisualStyleBackColor = true;
-            this.BuscarBtn.Click += new System.EventHandler(this.BuscarBtn_Click);
             // 
             // EliminarCoutaModeradoraGUI
             // 

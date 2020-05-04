@@ -64,5 +64,12 @@ namespace LiquidacionCoutaModeradoraGUI
             EliminarCoutaModeradoraGUI eliminarCoutaModeradoraGUI = new EliminarCoutaModeradoraGUI();
             eliminarCoutaModeradoraGUI.Show();
         }
+
+        private void consultarPorFechaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ConsultaFechaLiquidacionCoutaGUI consultaFechaLiquidacionCoutaGUI = new ConsultaFechaLiquidacionCoutaGUI();
+
+            consultaFechaLiquidacionCoutaGUI.Show();
+        }
     }
 }
