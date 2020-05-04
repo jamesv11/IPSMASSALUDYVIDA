@@ -64,6 +64,12 @@
     <Compile Include="ConsultarLiquidacionesTipoGUI.Designer.cs">
       <DependentUpon>ConsultarLiquidacionesTipoGUI.cs</DependentUpon>
     </Compile>
+    <Compile Include="EliminarCoutaModeradoraGUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EliminarCoutaModeradoraGUI.Designer.cs">
+      <DependentUpon>EliminarCoutaModeradoraGUI.cs</DependentUpon>
+    </Compile>
     <Compile Include="PrincipalForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -86,6 +92,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ConsultarLiquidacionesTipoGUI.resx">
       <DependentUpon>ConsultarLiquidacionesTipoGUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EliminarCoutaModeradoraGUI.resx">
+      <DependentUpon>EliminarCoutaModeradoraGUI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PrincipalForm.resx">
       <DependentUpon>PrincipalForm.cs</DependentUpon>
@@ -134,6 +143,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\searchzoomregular_106304.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user_icon-icons.com_57997.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_delete_128_28267.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\edit_modify_alter_icon_141930.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

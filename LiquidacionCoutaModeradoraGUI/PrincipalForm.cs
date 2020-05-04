@@ -58,5 +58,11 @@ namespace LiquidacionCoutaModeradoraGUI
             ConsultarLiquidacionesCuotaCaracterGUI consultarLiquidacionesCuotaCaracterGUI = new ConsultarLiquidacionesCuotaCaracterGUI();
             consultarLiquidacionesCuotaCaracterGUI.Show();
         }
+
+        private void eliminarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            EliminarCoutaModeradoraGUI eliminarCoutaModeradoraGUI = new EliminarCoutaModeradoraGUI();
+            eliminarCoutaModeradoraGUI.Show();
+        }
     }
 }

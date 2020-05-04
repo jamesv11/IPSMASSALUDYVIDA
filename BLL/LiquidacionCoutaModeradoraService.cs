@@ -65,19 +65,23 @@ namespace BLL
 
         public string Eliminar(string numeroLiquidacion)
         {
+            LiquidacionCuotaModeradora liquidacionCuotaModeradora;
             try
             {
-                LiquidacionCuotaModeradora cuotaModeradora = liquidacionCoutaModeradoraRepository.Buscar(numeroLiquidacion);
-                if (cuotaModeradora != null)
+               liquidacionCuotaModeradora = liquidacionCoutaModeradoraRepository.Buscar(numeroLiquidacion);
+                if (liquidacionCuotaModeradora != null)
                 {
                     liquidacionCoutaModeradoraRepository.Eliminar(numeroLiquidacion);
-                    return $"La cuenta {cuotaModeradora.NumeroLiquidacion} ha sido eliminada";
+                     
+                    return  $"La cuenta {liquidacionCuotaModeradora.NumeroLiquidacion} ha sido eliminada"; 
                 }
-                return $"La cuenta {cuotaModeradora.ToString()} no se encuentra registrada";
+               
+                return $"La cuenta {liquidacionCuotaModeradora.NumeroLiquidacion} no se encuentra registrada";
             }
             catch (Exception E)
             {
-                return "Error al eliminar : " + E.Message;
+                
+                return $"Ha ocurrido un error en los datos {E.Message}" ;
             }
         }
         public string Modificar(LiquidacionCuotaModeradora liquidacionCuotaModeradora)
@@ -99,18 +103,23 @@ namespace BLL
             }
         }
 
-        public LiquidacionCuotaModeradora Buscar(string numeroLiquidacion)
+        public RespuestaBusqueda Buscar(string numeroLiquidacion)
         {
             IFactoriaLiquidacionCoutaModeradora factoriaLiquidacionCoutaModeradora = new FactoriaLiquidacionCoutaModeradora();
             LiquidacionCuotaModeradora liquidacionCuota;
+            
             try
+               
             {
-                if ((liquidacionCuota = liquidacionCoutaModeradoraRepository.Buscar(numeroLiquidacion)) != null)
+                RespuestaBusqueda respuestaBusqueda = new RespuestaBusqueda();
+                if ((liquidacionCuota = liquidacionCoutaModeradoraRepository.Buscar(numeroLiquidacion) )!= null)
                 {
-                    return factoriaLiquidacionCoutaModeradora.CreacionLiquidacionCoutaModeradora(liquidacionCuota.NumeroLiquidacion,
+                  respuestaBusqueda.liquidacionCuotaModeradora =  liquidacionCoutaModeradoraRepository.Buscar(numeroLiquidacion);
+                   factoriaLiquidacionCoutaModeradora.CreacionLiquidacionCoutaModeradora(liquidacionCuota.NumeroLiquidacion,
                          liquidacionCuota.IdentificacionPaciente, liquidacionCuota.TipoAfiliacion, liquidacionCuota.Salario,
                          liquidacionCuota.ValorServicio,liquidacionCuota.FechaLiquidacion,liquidacionCuota.NombrePaciente);
-
+                    respuestaBusqueda.Mensaje = "La busqueda ha sido realizada corractamente";
+                    return respuestaBusqueda;
                 }
                 return null;
             }
@@ -227,7 +236,11 @@ namespace BLL
         public IList<LiquidacionCuotaModeradora> liquidacionCuotaModeradoras { get; set; }
        
     }
-
+    public class RespuestaBusqueda
+    {
+        public string Mensaje { get; set; }
+        public LiquidacionCuotaModeradora liquidacionCuotaModeradora { get; set; }
+    }
 
 }
 

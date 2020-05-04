@@ -35,10 +35,11 @@
             this.consultarLiquidacionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.consultarPorTipoDeLiquidacionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.consultasEspecificasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.consultarPorCaracterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.consultarPorFechaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.eliminarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.menuStrip1.SuspendLayout();
@@ -53,7 +54,8 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.registrarToolStripMenuItem,
             this.consultasGeneralesToolStripMenuItem,
-            this.consultasEspecificasToolStripMenuItem});
+            this.consultasEspecificasToolStripMenuItem,
+            this.eliminarToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(824, 28);
@@ -103,11 +105,6 @@
             this.consultasEspecificasToolStripMenuItem.Size = new System.Drawing.Size(164, 24);
             this.consultasEspecificasToolStripMenuItem.Text = "ConsultasEspecificas";
             // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
-            // 
             // consultarPorCaracterToolStripMenuItem
             // 
             this.consultarPorCaracterToolStripMenuItem.Name = "consultarPorCaracterToolStripMenuItem";
@@ -120,6 +117,19 @@
             this.consultarPorFechaToolStripMenuItem.Name = "consultarPorFechaToolStripMenuItem";
             this.consultarPorFechaToolStripMenuItem.Size = new System.Drawing.Size(233, 24);
             this.consultarPorFechaToolStripMenuItem.Text = "Consultar por fecha";
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
+            // eliminarToolStripMenuItem
+            // 
+            this.eliminarToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.eliminarToolStripMenuItem.Name = "eliminarToolStripMenuItem";
+            this.eliminarToolStripMenuItem.Size = new System.Drawing.Size(161, 24);
+            this.eliminarToolStripMenuItem.Text = "Eliminar y modificar";
+            this.eliminarToolStripMenuItem.Click += new System.EventHandler(this.eliminarToolStripMenuItem_Click);
             // 
             // pictureBox2
             // 
@@ -179,6 +189,7 @@
         private System.Windows.Forms.ToolStripMenuItem consultarPorTipoDeLiquidacionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem consultarPorCaracterToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem consultarPorFechaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem eliminarToolStripMenuItem;
     }
 }
 

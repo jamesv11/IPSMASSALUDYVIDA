@@ -63,9 +63,29 @@ namespace LiquidacionCoutaModeradoraGUI.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap edit_modify_alter_icon_141930 {
+            get {
+                object obj = ResourceManager.GetObject("edit_modify_alter_icon_141930", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap hospital_icon_icons_com_54428 {
             get {
                 object obj = ResourceManager.GetObject("hospital_icon-icons.com_54428", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ic_delete_128_28267 {
+            get {
+                object obj = ResourceManager.GetObject("ic_delete_128_28267", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -86,6 +106,16 @@ namespace LiquidacionCoutaModeradoraGUI.Properties {
         internal static System.Drawing.Bitmap searchzoomregular_106304 {
             get {
                 object obj = ResourceManager.GetObject("searchzoomregular_106304", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap user_icon_icons_com_57997 {
+            get {
+                object obj = ResourceManager.GetObject("user_icon-icons.com_57997", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

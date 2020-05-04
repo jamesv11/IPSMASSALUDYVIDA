@@ -55,17 +55,8 @@ namespace IPSMASSALUDYVIDA
             Console.WriteLine(liquidacionCoutaModeradoraService.Guardar(cuartaliquidacion));
             Console.WriteLine(liquidacionCoutaModeradoraService.Guardar(Quintaliquidacion));
 
-            Console.WriteLine(liquidacionCoutaModeradoraService.Consultar());
-            Console.WriteLine(liquidacionCoutaModeradoraService.ObtenerCantidadCoutaModeradoraSubsidiado());
-            Console.WriteLine(liquidacionCoutaModeradoraService.ObtenerValorTotalCoutaContributiva
-                (liquidacionCoutaModeradoraService.ObtenerCoutasModeradorasContributivas()));
-            Console.WriteLine(liquidacionCoutaModeradoraService.Eliminar("1"));
-            Console.WriteLine(liquidacionCoutaModeradoraService.Consultar());
-            foreach (var item in liquidacionCoutaModeradoraService.ObtenerNombresFiltrados("i"))
-            {
-                Console.WriteLine(item);
-            }
-            
+          
+          
         }
     }
 }
