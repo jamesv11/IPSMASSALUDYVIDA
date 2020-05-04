@@ -11,6 +11,8 @@ namespace Entity
         public decimal CoutaModeradora { get; set; }
         public string NumeroLiquidacion { get; set; }
         public string IdentificacionPaciente { get; set; }
+        public DateTime FechaLiquidacion { get; set; }
+        public string NombrePaciente { get; set; }
         public string TipoAfiliacion { get; set; }
         public decimal Salario { get; set; }
         public decimal Tarifa { get; set; }
@@ -19,13 +21,17 @@ namespace Entity
         public decimal CoutaModeradoraFinal { get; set; }
         public decimal SALARIOMINIMO = 980657;
 
-        public LiquidacionCuotaModeradora(string numeroLiquidacion, string identificacionPaciente, string tipoAfiliacion, decimal salario, decimal valorServicio)
+        public LiquidacionCuotaModeradora(string numeroLiquidacion, string identificacionPaciente, string tipoAfiliacion,
+            decimal salario, decimal valorServicio,DateTime fecha,string nombre)
         {
             NumeroLiquidacion = numeroLiquidacion;
             IdentificacionPaciente = identificacionPaciente;
             TipoAfiliacion = tipoAfiliacion;
             Salario = salario;
             ValorServicio = valorServicio;
+            FechaLiquidacion = fecha;
+            NombrePaciente = nombre;
+            
         }
         public LiquidacionCuotaModeradora()
         {
@@ -51,7 +57,9 @@ namespace Entity
 
         public override string ToString()
         {
-            return $"{NumeroLiquidacion};{IdentificacionPaciente};{TipoAfiliacion};{Salario};{ValorServicio};{Tarifa};{CoutaModeradoraFinal};{TopeMaximo}";
+            return $"{NumeroLiquidacion};{IdentificacionPaciente};{TipoAfiliacion};" +
+                $"{Salario};{ValorServicio};{Tarifa};{CoutaModeradoraFinal};{TopeMaximo};" +
+                $"{FechaLiquidacion};{NombrePaciente}";
         }
     }
 }

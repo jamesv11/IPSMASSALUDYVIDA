@@ -8,8 +8,8 @@ namespace Entity
 {
         public class LiquidacionCoutaModeradoraSubsidiado : LiquidacionCuotaModeradora
         {
-        public LiquidacionCoutaModeradoraSubsidiado(string numeroLiquidacion,string identificacionPaciente,decimal ValorServicio)
-            :base(numeroLiquidacion,identificacionPaciente,"Subsidiado",0,ValorServicio)
+        public LiquidacionCoutaModeradoraSubsidiado(string numeroLiquidacion,string identificacionPaciente,decimal ValorServicio,DateTime fecha,string nombre)
+            :base(numeroLiquidacion,identificacionPaciente,"Subsidiado",0,ValorServicio,fecha,nombre)
         {
 
         }

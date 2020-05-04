@@ -14,12 +14,17 @@ namespace IPSMASSALUDYVIDA
         static void Main(string[] args)
         {
             List<LiquidacionCuotaModeradora> liquidacionCuotaModeradoras = new List<LiquidacionCuotaModeradora>();
+            DateTime fecha = DateTime.Today;
+            
+            LiquidacionCuotaModeradora Primeraliquidacion = new LiquidacionCuotaModeradoraContributivo("1","12345",750000,12000, fecha,"James");
+            LiquidacionCuotaModeradora segundaliquidacion = new LiquidacionCuotaModeradoraContributivo("2", "12345", 2500000, 120000, fecha,"Natalia");
+            LiquidacionCuotaModeradora terceraliquidacion = new LiquidacionCuotaModeradoraContributivo("3", "12345", 1200000, 120000, fecha,"Nebis");
+            LiquidacionCuotaModeradora cuartaliquidacion = new LiquidacionCoutaModeradoraSubsidiado("4", "147852",1400000, fecha,"Neftali");
+            LiquidacionCuotaModeradora Quintaliquidacion = new LiquidacionCoutaModeradoraSubsidiado("5", "1003316933", 5000000, DateTime.Now,"Dilson");
 
-            LiquidacionCuotaModeradora Primeraliquidacion = new LiquidacionCuotaModeradoraContributivo("1","12345",750000,120000);
-            LiquidacionCuotaModeradora segundaliquidacion = new LiquidacionCuotaModeradoraContributivo("2", "12345", 2500000, 120000);
-            LiquidacionCuotaModeradora terceraliquidacion = new LiquidacionCuotaModeradoraContributivo("3", "12345", 900000, 120000);
-            LiquidacionCuotaModeradora cuartaliquidacion = new LiquidacionCoutaModeradoraSubsidiado("4", "147852",1400000);
 
+            Quintaliquidacion.AplicacionTarifayTopeMaximo();
+            Quintaliquidacion.CalculoCoutaModeradora();
             Primeraliquidacion.AplicacionTarifayTopeMaximo();
             Primeraliquidacion.CalculoCoutaModeradora();
             segundaliquidacion.AplicacionTarifayTopeMaximo();
@@ -33,6 +38,7 @@ namespace IPSMASSALUDYVIDA
             liquidacionCuotaModeradoras.Add(segundaliquidacion);
             liquidacionCuotaModeradoras.Add(terceraliquidacion);
             liquidacionCuotaModeradoras.Add(cuartaliquidacion);
+            liquidacionCuotaModeradoras.Add(Quintaliquidacion);
 
             foreach (var item in liquidacionCuotaModeradoras)
             {
@@ -41,49 +47,25 @@ namespace IPSMASSALUDYVIDA
 
             
             LiquidacionCoutaModeradoraService liquidacionCoutaModeradoraService = new LiquidacionCoutaModeradoraService();
+
             
-            liquidacionCoutaModeradoraService.Guardar(Primeraliquidacion);
-            liquidacionCoutaModeradoraService.Guardar(segundaliquidacion);
-            liquidacionCoutaModeradoraService.Guardar(terceraliquidacion);
-            liquidacionCoutaModeradoraService.Guardar(cuartaliquidacion);
-            Console.WriteLine("Consultas");
-            Console.WriteLine(liquidacionCoutaModeradoraService.Consultar());
-            Console.WriteLine("Eliminar el registro '3' ");
-            liquidacionCoutaModeradoraService.Eliminar("3");
-            Console.WriteLine("Modificar \n La cuenta con numero de liquidacion 1 \n ");
-            liquidacionCoutaModeradoraService.Buscar("1");
-            bool retornoTipoAfiliciacion = liquidacionCoutaModeradoraService.RetornarTipoAfiliacion("1");
-            if(retornoTipoAfiliciacion)
-            {
-                LiquidacionCuotaModeradora nuevoRegistro = new LiquidacionCoutaModeradoraSubsidiado();
-                nuevoRegistro.NumeroLiquidacion = liquidacionCoutaModeradoraService.Buscar("1").NumeroLiquidacion;
-                nuevoRegistro.IdentificacionPaciente = liquidacionCoutaModeradoraService.Buscar("1").IdentificacionPaciente;
-                nuevoRegistro.TipoAfiliacion = liquidacionCoutaModeradoraService.Buscar("1").TipoAfiliacion;
-                nuevoRegistro.Salario = liquidacionCoutaModeradoraService.Buscar("1").Salario;
-                nuevoRegistro.ValorServicio = 450000;
-                nuevoRegistro.Tarifa = liquidacionCoutaModeradoraService.Buscar("1").Tarifa;
-                nuevoRegistro.CoutaModeradoraFinal = liquidacionCoutaModeradoraService.Buscar("1").CoutaModeradoraFinal;
-                nuevoRegistro.TopeMaximo = liquidacionCoutaModeradoraService.Buscar("1").TopeMaximo;
-                liquidacionCoutaModeradoraService.Modificar(nuevoRegistro);
-          
-            }
-            else
-            {
-                LiquidacionCuotaModeradora nuevoRegistro = new LiquidacionCuotaModeradoraContributivo();
-                nuevoRegistro = liquidacionCoutaModeradoraService.Buscar("1");
-                nuevoRegistro.NumeroLiquidacion = liquidacionCoutaModeradoraService.Buscar("1").NumeroLiquidacion;
-                nuevoRegistro.IdentificacionPaciente = liquidacionCoutaModeradoraService.Buscar("1").IdentificacionPaciente;
-                nuevoRegistro.TipoAfiliacion = liquidacionCoutaModeradoraService.Buscar("1").TipoAfiliacion;
-                nuevoRegistro.Salario = liquidacionCoutaModeradoraService.Buscar("1").Salario;
-                nuevoRegistro.ValorServicio = 450000;
-                nuevoRegistro.Tarifa = liquidacionCoutaModeradoraService.Buscar("1").Tarifa;
-                nuevoRegistro.CoutaModeradoraFinal = liquidacionCoutaModeradoraService.Buscar("1").CoutaModeradoraFinal;
-                nuevoRegistro.TopeMaximo = liquidacionCoutaModeradoraService.Buscar("1").TopeMaximo;
-                liquidacionCoutaModeradoraService.Modificar(nuevoRegistro);
-            }
-
+            Console.WriteLine(liquidacionCoutaModeradoraService.Guardar(Primeraliquidacion));
+            Console.WriteLine(liquidacionCoutaModeradoraService.Guardar(segundaliquidacion));
+            Console.WriteLine(liquidacionCoutaModeradoraService.Guardar(terceraliquidacion));
+            Console.WriteLine(liquidacionCoutaModeradoraService.Guardar(cuartaliquidacion));
+            Console.WriteLine(liquidacionCoutaModeradoraService.Guardar(Quintaliquidacion));
 
             Console.WriteLine(liquidacionCoutaModeradoraService.Consultar());
+            Console.WriteLine(liquidacionCoutaModeradoraService.ObtenerCantidadCoutaModeradoraSubsidiado());
+            Console.WriteLine(liquidacionCoutaModeradoraService.ObtenerValorTotalCoutaContributiva
+                (liquidacionCoutaModeradoraService.ObtenerCoutasModeradorasContributivas()));
+            Console.WriteLine(liquidacionCoutaModeradoraService.Eliminar("1"));
+            Console.WriteLine(liquidacionCoutaModeradoraService.Consultar());
+            foreach (var item in liquidacionCoutaModeradoraService.ObtenerNombresFiltrados("i"))
+            {
+                Console.WriteLine(item);
+            }
+            
         }
     }
 }

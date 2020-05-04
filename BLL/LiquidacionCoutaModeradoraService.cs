@@ -13,12 +13,12 @@ namespace BLL
     {
 
         LiquidacionCoutaModeradoraRepository liquidacionCoutaModeradoraRepository;
-        
-        
+
+
         public LiquidacionCoutaModeradoraService()
         {
             liquidacionCoutaModeradoraRepository = new LiquidacionCoutaModeradoraRepository();
-            
+
         }
 
         public string Guardar(LiquidacionCuotaModeradora liquidacionCuotaModeradora)
@@ -28,63 +28,63 @@ namespace BLL
                 if (liquidacionCoutaModeradoraRepository.Buscar(liquidacionCuotaModeradora.NumeroLiquidacion) == null)
                 {
                     liquidacionCoutaModeradoraRepository.Guardar(liquidacionCuotaModeradora);
-                    return $"Se ha guardado correctamente {liquidacionCuotaModeradora.ToString()}";
+                    return $"Se ha guardado correctamente ";
                 }
                 return $"Liquidacion Ya registrada {liquidacionCuotaModeradora.NumeroLiquidacion}";
-     
+
             }
             catch (Exception e)
             {
 
                 return $"Error en los datos {e.Message}";
             }
-            
-            
+
+
         }
-        public string Consultar()
+        public RespuestaConsulta Consultar()
         {
-            List<LiquidacionCuotaModeradora> liquidacionCuotaModeradoras = new List<LiquidacionCuotaModeradora>();
+            //IList<LiquidacionCuotaModeradora> liquidacionCuotaModeradoras = new List<LiquidacionCuotaModeradora>();
+            RespuestaConsulta respuestaConsulta = new RespuestaConsulta();
             try
             {
 
-               liquidacionCuotaModeradoras =  liquidacionCoutaModeradoraRepository.Consultar();
-                foreach (var item in liquidacionCuotaModeradoras)
+                respuestaConsulta.liquidacionCuotaModeradoras = liquidacionCoutaModeradoraRepository.Consultar();
+                foreach (var item in respuestaConsulta.liquidacionCuotaModeradoras)
                 {
                     Console.WriteLine(item.ToString());
                 }
-                return "Ha sido ejecutado con exito";
+                respuestaConsulta.Mensaje = "Consulta realizada con exito";
+                return respuestaConsulta;
             }
-            catch (Exception e )
+            catch (Exception )
             {
 
-                return $"Error en los datos {e.Message}";
+                return null;
             }
         }
 
         public string Eliminar(string numeroLiquidacion)
         {
-            
             try
             {
-                if((liquidacionCoutaModeradoraRepository.Buscar(numeroLiquidacion)) != null)
+                LiquidacionCuotaModeradora cuotaModeradora = liquidacionCoutaModeradoraRepository.Buscar(numeroLiquidacion);
+                if (cuotaModeradora != null)
                 {
-                    
                     liquidacionCoutaModeradoraRepository.Eliminar(numeroLiquidacion);
-                    return $"EL registro ha sido eliminado con exito {liquidacionCoutaModeradoraRepository.Buscar(numeroLiquidacion).ToString()}";
+                    return $"La cuenta {cuotaModeradora.NumeroLiquidacion} ha sido eliminada";
                 }
-                return $"El registro no ha sido encontrado {numeroLiquidacion}";  
+                return $"La cuenta {cuotaModeradora.ToString()} no se encuentra registrada";
             }
-            catch (Exception e)
+            catch (Exception E)
             {
-
-                return $"Error en los datos {e.Message}";
+                return "Error al eliminar : " + E.Message;
             }
         }
         public string Modificar(LiquidacionCuotaModeradora liquidacionCuotaModeradora)
         {
             try
             {
-                if(liquidacionCoutaModeradoraRepository.Buscar(liquidacionCuotaModeradora.NumeroLiquidacion) != null)
+                if (liquidacionCoutaModeradoraRepository.Buscar(liquidacionCuotaModeradora.NumeroLiquidacion) != null)
                 {
 
                     liquidacionCoutaModeradoraRepository.Modificar(liquidacionCuotaModeradora);
@@ -95,29 +95,139 @@ namespace BLL
             catch (Exception e)
             {
 
-                return $"Error en los datos {e.Message}";
+                return $"Error al modificar : {e.Message}";
             }
         }
 
-       public LiquidacionCuotaModeradora Buscar(string numeroLiquidacion)
+        public LiquidacionCuotaModeradora Buscar(string numeroLiquidacion)
         {
-            if(liquidacionCoutaModeradoraRepository.Buscar(numeroLiquidacion) != null)
+            IFactoriaLiquidacionCoutaModeradora factoriaLiquidacionCoutaModeradora = new FactoriaLiquidacionCoutaModeradora();
+            LiquidacionCuotaModeradora liquidacionCuota;
+            try
             {
-                LiquidacionCuotaModeradora liquidacionCuotaModeradora = liquidacionCoutaModeradoraRepository.Buscar(numeroLiquidacion);
-                return liquidacionCuotaModeradora;
+                if ((liquidacionCuota = liquidacionCoutaModeradoraRepository.Buscar(numeroLiquidacion)) != null)
+                {
+                    return factoriaLiquidacionCoutaModeradora.CreacionLiquidacionCoutaModeradora(liquidacionCuota.NumeroLiquidacion,
+                         liquidacionCuota.IdentificacionPaciente, liquidacionCuota.TipoAfiliacion, liquidacionCuota.Salario,
+                         liquidacionCuota.ValorServicio,liquidacionCuota.FechaLiquidacion,liquidacionCuota.NombrePaciente);
+
+                }
+                return null;
+            }
+            catch (Exception)
+            {
+
+                return null;
             }
 
+        }
+
+        public LiquidacionCuotaModeradora CreacionLiquidacionModeradora(string numeroLiquidacion,
+                string identificacionPaciente, string tipoAfiliacion, decimal salario, decimal valorServicio,DateTime fecha,string nombre)
+        {
+            try
+            {
+                IFactoriaLiquidacionCoutaModeradora factoriaLiquidacionCoutaModeradora = new FactoriaLiquidacionCoutaModeradora();
+                return factoriaLiquidacionCoutaModeradora.CreacionLiquidacionCoutaModeradora(numeroLiquidacion,
+                    identificacionPaciente, tipoAfiliacion, salario, valorServicio,fecha,nombre);
+            }
+            catch (Exception)
+            {
+
+                return null;
+            }
+
+
+        }
+        public int ObtenerCantidadCoutaModeradoraSubsidiado()
+        {
+            return liquidacionCoutaModeradoraRepository.ObtenerCantidadCoutaModeradoraSubsidiado();
+        }
+        public int ObtenerCantidadCoutaModeradoraContributivo()
+        {
+            return liquidacionCoutaModeradoraRepository.ObtenerCantidadCoutaModeradoraContributivo();
+        }
+        public RespuestaConsulta ObtenerCoutasModeradorasSubsidiadas()
+        {
+            RespuestaConsulta respuestaConsulta = new RespuestaConsulta();
+            try
+            {
+                respuestaConsulta.liquidacionCuotaModeradoras = liquidacionCoutaModeradoraRepository.ObtenerCoutasModeradorasSubsidiadas();
+                respuestaConsulta.Mensaje = "La consulta ha sido realizada con extio";
+                return respuestaConsulta;
+            }
+            catch (Exception)
+            {
+
+                return null;
+            }
             
-            return null;
         }
-        public Boolean RetornarTipoAfiliacion(string numeroLiquidacion)
+        public RespuestaConsulta ObtenerCoutasModeradorasContributivas()
         {
-            LiquidacionCuotaModeradora liquidacionCuotaModeradora = liquidacionCoutaModeradoraRepository.Buscar(numeroLiquidacion);
-            if(liquidacionCuotaModeradora.TipoAfiliacion.Equals("Subsidiado"))
+            RespuestaConsulta respuestaConsulta = new RespuestaConsulta();
+            try
             {
-                return true;
+                respuestaConsulta.liquidacionCuotaModeradoras = liquidacionCoutaModeradoraRepository.ObtenerCoutasModeradorasContributivas();
+                respuestaConsulta.Mensaje = "La consulta ha sido realizada con exito";
+                return respuestaConsulta;
             }
-            return false;
+            catch (Exception)
+            {
+
+                return null;
+            }
+           
         }
+        public decimal ObtenerValorTotalCoutaSubsidiadas(IList<LiquidacionCuotaModeradora> liquidacionCuotaModeradoras)
+        {
+            return liquidacionCoutaModeradoraRepository.ValorTotalCoutaModeradoraSubsidiado(liquidacionCuotaModeradoras);
+        }
+        public decimal ObtenerValorTotalCoutaContributivas(IList<LiquidacionCuotaModeradora> liquidacionCuotaModeradoras)
+        {
+            return liquidacionCoutaModeradoraRepository.ValorTotalCoutaModeradoraSubsidiado(liquidacionCuotaModeradoras);
+        }
+        public RespuestaConsulta ObtenerNombresFiltrados(string caracter)
+        {
+            IList<LiquidacionCuotaModeradora> liquidacionCuotaModeradoras;
+            RespuestaConsulta respuestaConsulta = new RespuestaConsulta();
+            try
+            {
+                 liquidacionCuotaModeradoras = liquidacionCoutaModeradoraRepository.ObtenerNombresFiltrados(caracter);
+                if (liquidacionCuotaModeradoras != null)
+                {
+                    respuestaConsulta.liquidacionCuotaModeradoras = liquidacionCuotaModeradoras;
+                    respuestaConsulta.Mensaje = "La consulta ha sido realizada con exito";
+                    return respuestaConsulta;
+                }              
+                else
+                {
+                    respuestaConsulta.liquidacionCuotaModeradoras = null;
+                    respuestaConsulta.Mensaje = "No se ha encontrado ninguna similitud";
+                    return respuestaConsulta;
+                }
+            }
+            catch (Exception)
+            {
+
+                return null;
+            }
+            
+        }
+        public int ObtenerCantidadTotalCoutasModeradoras()
+        {
+            return liquidacionCoutaModeradoraRepository.ObtenerCantidadTotalCoutasModeradoras();
+        }
+
+
     }
+    public class RespuestaConsulta
+    {
+        public string Mensaje { get; set; }
+        public IList<LiquidacionCuotaModeradora> liquidacionCuotaModeradoras { get; set; }
+       
+    }
+
+
 }
+

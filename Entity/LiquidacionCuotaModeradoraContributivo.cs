@@ -8,8 +8,8 @@ namespace Entity
 {
     public class LiquidacionCuotaModeradoraContributivo : LiquidacionCuotaModeradora
     {
-        public LiquidacionCuotaModeradoraContributivo(string numeroLiquidacion , string identificacionPaciente, decimal Salario , decimal ValorServicio) 
-            : base(numeroLiquidacion , identificacionPaciente, "Contributivo",Salario,ValorServicio)
+        public LiquidacionCuotaModeradoraContributivo(string numeroLiquidacion , string identificacionPaciente, decimal Salario , decimal ValorServicio,DateTime fecha,string nombre) 
+            : base(numeroLiquidacion , identificacionPaciente, "Contributivo",Salario,ValorServicio,fecha,nombre)
         {
             
         }
